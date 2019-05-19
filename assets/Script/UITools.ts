@@ -39,11 +39,11 @@ export const UITools = {
 
     /**
      * @brief 数字格式化
-     * @param num 数字
+     * @param num 源数字
      * @param digits 小数点保留位数(默认保留6位)
      * @return 格式化之后到数字
      */
-   fromatBigNumber(num: number, digits: number = 2)
+   fromatBigNumber(num: number, digits: number = 2): string
    {
         let ret = "";
         if (num < 10000)
@@ -60,12 +60,42 @@ export const UITools = {
             num = num / 100000000;
             ret = num.toFixed(digits).toString() + "亿";
         }
+
+        return ret;
    },
 
+   /**
+    * @brief 计算贝塞尔曲线控制点
+    * @param from 
+    * @param to 
+    * @param t 
+    */
    calculateBezierControlPt(from: cc.Vec2, to: cc.Vec2, t: number)
    {
         //cc.lerp(from, t, end)
-   }
+   },
+
+    /**
+     * 倒计时
+     * @param label label控件
+     * @param count 倒计时总时长
+     * @param cb 回调 
+     */
+    countDown(label: cc.Label, count: number, cb = () => { }) 
+    {
+        label.unscheduleAllCallbacks();
+
+        label.string = `${count}`;
+        label.node.active = true
+        label.schedule(() => {
+            count -= 1
+            label.string = `${count}`
+            if (count <= 0) {
+                label.node.active = false
+                cb()
+            }
+        }, 1, count)
+    }
 }
 
 
