@@ -1,2 +1,2 @@
-# Flappybird
-game flappybird based on cocos2dx
+# hello-world
+Hello world new project template.
