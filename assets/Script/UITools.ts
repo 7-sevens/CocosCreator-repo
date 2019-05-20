@@ -31,11 +31,12 @@ export const UITools = {
      */
     formatName: function(name: string, maxLen: number = 6): string
     {
-        if (name.length > 6)
+        if (name.length > maxLen)
             return name.substring(0, maxLen) + "...";
         else
             return name;
     },
+
 
     /**
      * @brief 数字格式化
@@ -52,7 +53,7 @@ export const UITools = {
         }
         else if (num >= 10000 && num < 100000000)
         {
-            num = num / 1000;
+            num = num / 10000;
             ret = num.toFixed(digits).toString() + "万";
         }
         else if (num >= 100000000)
