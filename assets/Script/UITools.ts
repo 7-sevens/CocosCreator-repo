@@ -1,3 +1,6 @@
+//
+// UI工具类 
+//
 
 export const UITools = {
 
@@ -96,32 +99,26 @@ export const UITools = {
                 cb()
             }
         }, 1, count)
+    },
+
+    /**
+     * @brief 匹配由数字和26个英文字母组成的字符串
+     * @param str 源字符串
+     */
+    regNUmberAndLetter(str:string) :boolean
+    {
+        let reg = /^[A-Za-z0-9]+$/;
+        return reg.test(str);
+    },
+
+    /**
+     * @brief 替换字符串中指定索引的字符
+     * @param str 源字符串
+     * @param index 索引
+     * @param replacement 替换元素 
+     */
+    replaceAt(str:string, index:number, replacement:string)
+    {
+        return str.substr(0,index) + replacement + str.substr(index+replacement.length);
     }
 }
-
-
-/*
-namespace UITools
-{
-    export function seekChild(root_node:cc.Node, name:string): cc.Node
-    {
-        if(root_node.name == name)
-            return root_node;
-
-        let childCount = root_node.childrenCount;
-        for (let i = 0; i < childCount; i++)
-        {
-            let v = this.seekChild(root_node.children[i], name);
-            if (v != null)
-                return v;
-        }
-
-        return null;
-    }
-
-    export function printInfo()
-    {
-        console.log('-----  printInfo')
-    }
-}
-*/
