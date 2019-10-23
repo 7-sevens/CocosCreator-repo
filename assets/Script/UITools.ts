@@ -40,6 +40,33 @@ export const UITools = {
             return name;
     },
 
+    /**
+     * @brief 数字格式化(四舍五入)
+     * @param num 源数字
+     * @param digits 小数点保留位数(默认保留2位)
+     * @return 格式化之后到数字
+     */
+    fromatNumber(num: number, digits: number = 2): string 
+    {
+        let ret = "";
+        ret = num.toFixed(digits).toString();
+
+        return ret;
+    },
+
+    /**
+     * @brief 数字格式化(非四舍五入)
+     * @param num 源数字
+     * @param digits 小数点保留位数(默认保留2位)
+     * @return 格式化之后到数字
+     */
+    fromatNumber2(num:number, digits:number=2) : string
+    {
+        let ret = "";
+        ret = (Math.floor(num * Math.pow(10,digits)) / Math.pow(10,digits)).toFixed(digits);
+
+        return ret;
+    },
 
     /**
      * @brief 数字格式化
